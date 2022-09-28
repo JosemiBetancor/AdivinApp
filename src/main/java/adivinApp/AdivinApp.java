@@ -49,43 +49,41 @@ public class AdivinApp extends Application {
 
 	private void onComprobarAction(ActionEvent e) {
 		try {
+			intentos++;
 			int numero = Integer.parseInt(Textfield.getText());
-			if (numero>100 || numero<0) {
+
+			if (numero > 100 || numero < 0) {
 				throw new NumberFormatException();
 			}
-	
-	if (numero == solucion) {
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("AdivinApp");
-		alert.setHeaderText("Has ganado");
-		alert.setContentText("Has acertado en " + intentos + " intentos eres una maquina");
-		alert.showAndWait();
-		solucion = (int) ((Math.random() * 100) + 1);
-	} else {
-		if (numero > solucion) {
-			Alert alert = new Alert(AlertType.WARNING);
+
+			if (numero == solucion) {
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("AdivinApp");
+				alert.setHeaderText("Has ganado");
+				alert.setContentText("Has acertado en " + intentos + " intentos eres una maquina");
+				alert.showAndWait();
+				solucion = (int) ((Math.random() * 100) + 1);
+			} else if (numero > solucion) {
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("AdivinApp");
+				alert.setHeaderText("la solucion es menor que " + numero);
+				alert.setContentText("Vuelve a intentarlo");
+				alert.showAndWait();
+			} else {
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("AdivinApp");
+				alert.setHeaderText("la solucion es mayor que " + numero);
+				alert.setContentText("Vuelve a intentarlo");
+				alert.showAndWait();
+			}
+
+		} catch (NumberFormatException e2) {
+			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("AdivinApp");
-			alert.setHeaderText("la solucion es menor que " + numero);
-			alert.setContentText("Vuelve a intentarlo");
-			alert.showAndWait();
-		} else {
-			Alert alert = new Alert(AlertType.WARNING);
-			alert.setTitle("AdivinApp");
-			alert.setHeaderText("la solucion es mayor que " + numero);
-			alert.setContentText("Vuelve a intentarlo");
+			alert.setHeaderText("No es un numero válido");
+			alert.setContentText("Introduce un numero entero del 1 al 100");
 			alert.showAndWait();
 		}
-		intentos++;
-
-	}
-} catch (NumberFormatException e2) {
-	Alert alert = new Alert(AlertType.ERROR);
-	alert.setTitle("AdivinApp");
-	alert.setHeaderText("No es un numero válido");
-	alert.setContentText("Introduce un numero entero del 1 al 100");
-	alert.showAndWait();
-}
-		
 
 	}
 
