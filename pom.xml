@@ -10,7 +10,7 @@
 	<properties>
 		<maven.compiler.target>11</maven.compiler.target>
 		<maven.compiler.source>11</maven.compiler.source>
-		<exec.mainClass>AdivinApp.AdivinAppMain</exec.mainClass>
+		<exec.mainClass>adivinApp.AdivinAppMain</exec.mainClass>
 	</properties>
 
 	<dependencies>
